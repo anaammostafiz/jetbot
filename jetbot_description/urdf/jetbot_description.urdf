@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="jetbot_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0420959690163131 -0.0262640139018914 0.0381031259713721"
+        rpy="0 0 0" />
+      <mass
+        value="0.769809092579164" />
+      <inertia
+        ixx="0.00145919153749444"
+        ixy="-3.19598949639506E-08"
+        ixz="-1.88742924762225E-07"
+        iyy="0.00115895294422066"
+        iyz="8.79841731610717E-06"
+        izz="0.00230237029404094" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.105 -0.04 0.011"
+        rpy="0 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.105 -0.04 0.011"
+        rpy="0 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_wheel">
+    <inertial>
+      <origin
+        xyz="-1.85861018103806E-08 -1.31927746505056E-09 0.0181270123819045"
+        rpy="0 0 0" />
+      <mass
+        value="0.166945648008942" />
+      <inertia
+        ixx="6.72964134165884E-05"
+        ixy="5.95216693282123E-12"
+        ixz="3.19966028425365E-12"
+        iyy="6.72926792753044E-05"
+        iyz="2.24052087793533E-13"
+        izz="0.000113206411587751" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_rw"
+    type="fixed">
+    <origin
+      xyz="0 -0.066063 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_wheel">
+    <inertial>
+      <origin
+        xyz="-1.85861068133231E-08 -1.31927280211386E-09 0.0181270123819045"
+        rpy="0 0 0" />
+      <mass
+        value="0.166945648008941" />
+      <inertia
+        ixx="6.72964134165889E-05"
+        ixy="5.95215985162579E-12"
+        ixz="3.19966267206997E-12"
+        iyy="6.7292679275299E-05"
+        iyz="2.24050359829625E-13"
+        izz="0.00011320641158775" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_lw"
+    type="fixed">
+    <origin
+      xyz="0 0.06994 0"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="intel_d435">
+    <inertial>
+      <origin
+        xyz="0.00111199100986521 -2.78348572908815E-05 -0.0125996884137267"
+        rpy="0 0 0" />
+      <mass
+        value="1.26688353681071" />
+      <inertia
+        ixx="0.00011453127936713"
+        ixy="-4.05581854153719E-08"
+        ixz="1.13413795729694E-05"
+        iyy="0.000771597084670348"
+        iyz="2.05555121770648E-07"
+        izz="0.000763733376205703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/intel_d435.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/intel_d435.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_camera"
+    type="fixed">
+    <origin
+      xyz="0.027 0 0.1175"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="intel_d435" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="laser">
+    <inertial>
+      <origin
+        xyz="-0.078492857115907 0.744427355564884 0.133450452865628"
+        rpy="0 0 0" />
+      <mass
+        value="0.0730824507861898" />
+      <inertia
+        ixx="1.95800481655615E-05"
+        ixy="-4.28350883711767E-07"
+        ixz="1.04071090439431E-07"
+        iyy="4.14185690527821E-05"
+        iyz="-9.38711334679144E-09"
+        izz="2.41260123210317E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.09 0.132 -0.763"
+        rpy="1.5708 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/rplidar_a1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.09 0.132 -0.763"
+        rpy="1.5708 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jetbot_description/meshes/rplidar_a1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_laser"
+    type="fixed">
+    <origin
+      xyz="-0.1325 0.015 0.1485"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="laser" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
