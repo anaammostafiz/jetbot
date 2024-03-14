@@ -1,0 +1,9 @@
+<launch>
+
+    <include file="$(find rplidar_ros)/launch/rplidar_a1.launch"/>
+    
+    <include file="$(find jetbot_description)/launch/model.launch"/>
+
+    
+
+</launch>
