@@ -22,9 +22,9 @@ PI = 3.141592
 
 # Robot physical constants
 TICKS_PER_REVOLUTION = 330
-WHEEL_RADIUS = 0.0675
+WHEEL_RADIUS = 0.03375
 WHEEL_BASE = 0.183
-TICKS_PER_METER = 778.3
+TICKS_PER_METER = 1556.18
 
 # Distance both wheels have traveled
 distanceLeft = 0.0
