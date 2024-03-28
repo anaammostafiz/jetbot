@@ -7,7 +7,7 @@
 // min amount of PWM the motors need to move
 #define PWM_MIN 100
 // PWM ragnes from 0 to 255
-#define PWM_MAX 150
+#define PWM_MAX 200
  
 // encoder
 #define ENCA_R 2 // RED
