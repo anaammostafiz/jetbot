@@ -9,7 +9,6 @@ project(jetbot_2dnav)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   move_base
-  rf2o_laser_odometry
   rplidar_ros
   tf
 )

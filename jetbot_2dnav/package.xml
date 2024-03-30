@@ -50,15 +50,12 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>move_base</build_depend>
-  <build_depend>rf2o_laser_odometry</build_depend>
   <build_depend>rplidar_ros</build_depend>
   <build_depend>tf</build_depend>
   <build_export_depend>move_base</build_export_depend>
-  <build_export_depend>rf2o_laser_odometry</build_export_depend>
   <build_export_depend>rplidar_ros</build_export_depend>
   <build_export_depend>tf</build_export_depend>
   <exec_depend>move_base</exec_depend>
-  <exec_depend>rf2o_laser_odometry</exec_depend>
   <exec_depend>rplidar_ros</exec_depend>
   <exec_depend>tf</exec_depend>
 

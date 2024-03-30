@@ -10,10 +10,10 @@
 #define PWM_MAX 200
  
 // encoder
-#define ENCA_R 2 // RED
-#define ENCB_R 3 // BLACK
+#define ENCA_R 5 // RED
+#define ENCB_R 6 // BLACK
 #define ENCA_L 4 // RED
-#define ENCB_L 5 // BLACK
+#define ENCB_L 3 // BLACK
 
 volatile int posi_R = 0; // specify posi_R as volatile
 volatile int posi_L = 0; // specify posi_L as volatile
@@ -23,14 +23,14 @@ const int encoder_minimum = -32768;
 const int encoder_maximum = 32767;
 
 // right motors connections
-int R_PWM = 7;
-int R_1 = 8;
-int R_2 = 9;
+int R_PWM = 12;
+int R_1 = 10;
+int R_2 = 11;
 
 // left motors connections
-int L_PWM = 12;
-int L_1 = 10;
-int L_2 = 11;
+int L_PWM = 7;
+int L_1 = 8;
+int L_2 = 9;
 
 void velCallback(const geometry_msgs::Twist &msg){
   float x = max(min(msg.linear.x, 1.0f), -1.0f);
@@ -42,10 +42,10 @@ void velCallback(const geometry_msgs::Twist &msg){
   uint16_t lpwm = mapPwm(fabs(lvel), PWM_MIN, PWM_MAX);
   uint16_t rpwm = mapPwm(fabs(rvel), PWM_MIN, PWM_MAX);
 
-  digitalWrite(R_1, rvel > 0);
-  digitalWrite(R_2, rvel < 0);
-  digitalWrite(L_1, lvel > 0);
-  digitalWrite(L_2, lvel < 0);
+  digitalWrite(R_2, rvel > 0);
+  digitalWrite(R_1, rvel < 0);
+  digitalWrite(L_2, lvel > 0);
+  digitalWrite(L_1, lvel < 0);
 
   analogWrite(R_PWM, rpwm);
   analogWrite(L_PWM, lpwm);
