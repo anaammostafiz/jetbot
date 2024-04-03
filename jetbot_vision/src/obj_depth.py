@@ -57,6 +57,8 @@ class Depthector:
 
                 class_list = []
                 depth_list = []
+                x_list = []
+                y_list = []
 
                 for detection in self.detections.detections:
                     average_depth = self.compute_average_depth(detection.bbox)
@@ -64,6 +66,8 @@ class Depthector:
 
                     depth_list.append(average_depth)
                     class_list.append(class_name)
+                    x_list.append(detection.bbox.center.x)
+                    y_list.append(detection.bbox.center.y)
 
                     cv2.putText(depth_image_with_overlay, 'Class: {}, Depth: {:.2f} m'.format(class_name, average_depth),
                                 (int(detection.bbox.center.x), int(detection.bbox.center.y - 10)),
@@ -76,6 +80,8 @@ class Depthector:
                 depths_msg.header = self.detections.header
                 depths_msg.classes = class_list
                 depths_msg.depths = depth_list
+                depths_msg.centers_x = x_list
+                depths_msg.centers_y = y_list
                 self.depths_pub.publish(depths_msg)
 
             except CvBridgeError as e:

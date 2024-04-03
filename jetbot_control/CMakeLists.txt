@@ -10,12 +10,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   nav_msgs
   sensor_msgs
+  jetbot_vision
 )
 
 catkin_package(
 	INCLUDE_DIRS include
 	LIBRARIES ${PROJECT_NAME}
-	CATKIN_DEPENDS roscpp
+	CATKIN_DEPENDS roscpp jetbot_vision
 #  DEPENDS system_lib
 )
 
@@ -35,6 +36,11 @@ set(name jetbot_class)
 add_executable(${name} src/${name}.cpp)
 add_dependencies(${name} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${name} ${catkin_LIBRARIES})
+
+set(csname follow)
+add_executable(${csname} src/${csname}.cpp)
+add_dependencies(${csname} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(${csname} ${catkin_LIBRARIES})
 
 install(TARGETS ${PROJECT_NAME}
 	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
