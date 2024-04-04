@@ -58,32 +58,46 @@ void Follower::follow_leader(){
     double angular_vel = 0.0;
 
     const double k_z = 0.5;
-    const double k_x = 0.00075;
+    const double gs_x[] = {0.001, 0.0005, 0.0};
 
     if (!classes.empty()) {
         // Check if leader is present in the classes
         auto it = std::find(classes.begin(), classes.end(), leader);
         if (it != classes.end()) {
             int index = std::distance(classes.begin(), it);
-            
+        
+            double error_z = depths[index] - target_z;
+            std::cout << "error_z: " << error_z << std::endl;
+
             if (depths[index] >= target_z + z_thresh){
                 // move forward
-                double error_z = depths[index] - target_z;
                 linear_vel = std::min(k_z * error_z, 1.0);
                 std::cout << "MOVING FORWARD: " << linear_vel << std::endl;
             }
-            
-            if (centers_x[index] <= target_x - x_thresh){
-                // rotate counterclockwise
-                double error_x = target_x - centers_x[index];
-                angular_vel = std::min(k_x * error_x, 1.0);
-                std::cout << "ROTATING LEFT: " << angular_vel << std::endl;
-            } else if (centers_x[index] >= target_x + x_thresh){
-                // rotate clockwise
-                double error_x = target_x - centers_x[index];
-                angular_vel = std::max(k_x * error_x, -1.0);
-                std::cout << "ROTATING RIGHT: " << angular_vel << std::endl;
-            } 
+
+            if (centers_x[index] <= target_x - x_thresh || centers_x[index] >= target_x + x_thresh){
+                double k_x;
+                if (error_z >= 0.5){
+                    k_x = gs_x[0]; 
+                } else if (error_z >= 0.35){
+                    k_x = gs_x[1];
+                } else {
+                    k_x = gs_x[2];
+                }
+                
+                if (centers_x[index] <= target_x - x_thresh){
+                    // rotate counterclockwise
+                    double error_x = target_x - centers_x[index];    
+                    angular_vel = std::min(k_x * error_x, 1.0);
+                    std::cout << "ROTATING LEFT: k_x = " << k_x << " angular_vel = " << angular_vel << std::endl;
+                } else if (centers_x[index] >= target_x + x_thresh){
+                    // rotate clockwise
+                    double error_x = target_x - centers_x[index];
+                    angular_vel = std::max(k_x * error_x, -1.0);
+                    std::cout << "ROTATING RIGHT: k_x = " << k_x << " angular_vel = " << angular_vel << std::endl;
+                } 
+            }
+
         }
     }
 
